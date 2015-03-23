@@ -1,0 +1,187 @@
+timestamp: 2013-03-17T19:25:09.367598
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2013-03-17T19:25:09.528946
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2013-03-17T19:25:09.640739
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-03-17T19:25:09.763770
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2013-03-17T19:25:09.886651
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2013-03-17T19:25:10.011318
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2013-03-17T19:28:05.243589
+CREATE TABLE t_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_title CHAR(512) NOT NULL,
+    f_start_time TIMESTAMP,
+    f_end_time TIMESTAMP,
+    f_location CHAR(512),
+    f_log TEXT,
+    f_active CHAR(1),
+    created_on TIMESTAMP,
+    modified_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-03-17T19:28:59.430995
+CREATE TABLE t_event_archive(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_title CHAR(512) NOT NULL,
+    f_start_time TIMESTAMP,
+    f_end_time TIMESTAMP,
+    f_location CHAR(512),
+    f_log TEXT,
+    f_active CHAR(1),
+    created_on TIMESTAMP,
+    modified_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    current_record INTEGER REFERENCES t_event (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-03-17T22:12:47.819501
+CREATE TABLE t_task(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_title CHAR(512) NOT NULL,
+    f_due_time TIMESTAMP,
+    f_log TEXT,
+    f_active CHAR(1),
+    created_on TIMESTAMP,
+    modified_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-03-17T22:12:48.045465
+CREATE TABLE t_task_archive(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_title CHAR(512) NOT NULL,
+    f_due_time TIMESTAMP,
+    f_log TEXT,
+    f_active CHAR(1),
+    created_on TIMESTAMP,
+    modified_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    current_record INTEGER REFERENCES t_task (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-03-17T22:23:13.635178
+ALTER TABLE t_task ADD f_status CHAR(512);
+timestamp: 2013-03-17T22:23:13.787881
+ALTER TABLE t_task_archive ADD f_status CHAR(512);
+timestamp: 2013-03-18T19:06:13.053765
+ALTER TABLE t_task ADD f_description CHAR(512);
+timestamp: 2013-03-18T19:06:13.244121
+ALTER TABLE t_task_archive ADD f_description CHAR(512);
+timestamp: 2013-03-20T18:29:43.155954
+ALTER TABLE t_task ADD f_imp INTEGER;
+timestamp: 2013-03-20T18:29:43.329330
+ALTER TABLE t_task_archive ADD f_imp INTEGER;
+timestamp: 2013-03-27T01:05:17.954760
+ALTER TABLE t_task ADD created_ond DATE;
+timestamp: 2013-03-27T01:05:18.150235
+ALTER TABLE t_task_archive ADD created_ond DATE;
+timestamp: 2013-03-27T01:11:47.670019
+ALTER TABLE t_event ADD created_ond DATE;
+timestamp: 2013-03-27T01:11:47.843280
+ALTER TABLE t_event_archive ADD created_ond DATE;
+timestamp: 2013-03-27T01:17:44.823737
+ALTER TABLE t_event ADD f_start_timed DATE;
+timestamp: 2013-03-27T01:17:44.983159
+ALTER TABLE t_event_archive ADD f_start_timed DATE;
+timestamp: 2013-04-07T03:46:21.523346
+CREATE TABLE events(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Nameofuser INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    TypeofCalendar CHAR(512),
+    Title CHAR(512),
+    Description CHAR(512),
+    Eventdate DATE,
+    Starttime TIME,
+    Endtime TIME,
+    All_day CHAR(1),
+    Venue CHAR(512)
+);
+success!
+timestamp: 2013-04-07T03:46:21.819900
+CREATE TABLE tasks(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Nameofuser INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    TypeofCalendar CHAR(512),
+    Title CHAR(512),
+    Description CHAR(512),
+    DeadlineDate DATE,
+    DeadlineTime TIME,
+    Completed CHAR(1),
+    Venue CHAR(512)
+);
+success!
+timestamp: 2013-04-13T11:17:45.876622
+CREATE TABLE admin_events(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    TypeofCalendar CHAR(512),
+    Title CHAR(512),
+    Description CHAR(512),
+    Eventdate DATE,
+    Starttime TIME,
+    Endtime TIME,
+    All_day CHAR(1),
+    Venue CHAR(512)
+);
+success!
+timestamp: 2013-04-16T22:32:40.293453
+ALTER TABLE events ADD startdate DATE;
+timestamp: 2013-04-16T22:32:40.575685
+ALTER TABLE tasks ADD startdate DATE;
+timestamp: 2013-04-16T22:32:40.788232
+ALTER TABLE admin_events ADD startdate DATE;
+timestamp: 2013-04-16T22:39:39.494622
+ALTER TABLE events ADD enddate DATE;
+timestamp: 2013-04-16T22:39:39.967291
+ALTER TABLE admin_events ADD enddate DATE;

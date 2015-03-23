@@ -1,0 +1,125 @@
+{{response.files.append(URL(r=request,c='static',f='js/ui.core.js'))}}
+{{response.files.append(URL(r=request,c='static',f='js/ui.draggable.js'))}}
+{{response.files.append(URL(r=request,c='static',f='js/ui.resizable.js'))}}
+{{response.files.append(URL(r=request,c='static',f='js/fullcalendar.min.js'))}}
+
+
+{{response.files.append(URL(r=request,c='static',f='css/fullcalendar.css'))}}
+{{extend 'layout.html'}}
+
+
+
+<script type='text/javascript'>
+  
+   
+   jQuery(document).ready(function() {
+
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+             selectable: true,
+            selectHelper: true,
+            select: function(start, end, allDay) {
+                var title = prompt('Event Title:');
+                if (title) {
+                    calendar.fullCalendar('renderEvent',
+                        {
+                            title: title,
+                            start: start,
+                            end: end,
+                            allDay: allDay
+                        },
+                        true // make the event "stick"
+                    );
+                }
+                calendar.fullCalendar('unselect');
+            },
+			editable: true, 
+            
+            
+            events: [
+                {{for i in e:}}
+                {
+                {{s=str(i['Startdate'])
+                st=str(i['Starttime'])
+                ent=str(i['Endtime'])
+                en=str(i['Enddate'])
+            	ts=st.split(':')
+            	te=ent.split(':')
+                pe=en.split('-')
+                ps=s.split('-')
+                
+        }}
+                title: '{{=i['Title']}}',
+                                    {{if i['All_day']==True:}}
+                                    start: new Date(parseInt({{=ps[0]}}),parseInt({{=ps[1]}})-1,parseInt({{=ps[2]}})),
+            end: new Date(parseInt({{=pe[0]}}),parseInt({{=pe[1]}})-1,parseInt({{=pe[2]}}))
+                {{else:}}	
+       start: new Date(parseInt({{=ps[0]}}),parseInt({{=ps[1]}})-1,parseInt({{=ps[2]}}),parseInt({{=ts[0]}}),parseInt({{=ts[1]}})),
+           end: new Date(parseInt({{=pe[0]}}),parseInt({{=pe[1]}})-1,parseInt({{=pe[2]}}),parseInt({{=te[0]}}),parseInt({{=te[1]}})),
+               allDay: false
+                {{pass}}
+       {{="}," }}
+       
+                                       
+                                    {{pass}}  
+                                    
+                {{for i in t:}}
+                {
+                {{s=str(i['DeadlineDate'])
+                  et=str(i['DeadlineTime'])
+                p=s.split('-')
+                    pt=et.split(':')
+                
+        }}
+       {{if i['Completed']==True:}}
+       title: '{{=u'\u2713'}} : {{=i['Title']}}',
+           {{else:}}
+       title: ' : {{=i['Title']}}',
+           {{pass}}
+       start: new Date(parseInt({{=p[0]}}),parseInt({{=p[1]}})-1,parseInt({{=p[2]}}),parseInt({{=pt[0]}}),parseInt({{=pt[1]}})),
+           allDay: false
+					
+				
+       {{="}," }}
+       
+                                       
+                                    {{pass}}  
+             
+             
+                                          {{for i in a:}}
+                {
+                {{s=str(i['Startdate'])
+                
+                p=s.split('-')
+                
+        }}
+                title: '{{=i['Title']}}',
+                start: new Date(parseInt({{=p[0]}}),parseInt({{=p[1]}})-1,parseInt({{=p[2]}}))
+					
+	{{if i != a[len(a)-1]: }}
+       {{="}," }}
+       {{else:}}
+        {{="}"}}
+                                        {{pass}}
+                                    {{pass}}                            
+   			
+        
+                                                                
+                 
+            
+            ]
+            
+        });
+
+    });
+</script>
+<div class="text-right"><div id='calendar'></div></div>
+<a href="index.html"> Back to index</a>

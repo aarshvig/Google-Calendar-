@@ -1,0 +1,115 @@
+<!--
+Name       : Vestibule 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20130406
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <!-- include stylesheets -->
+
+<!--try 2-->
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Meri sharaab.Mera calendar. </title>
+<link href="http://fonts.googleapis.com/css?family=Oxygen:400,700,300" rel="stylesheet" type="text/css" />
+
+<link href="{{=URL('static','vestibule/style.css')}}" rel="stylesheet" type="text/css" media="screen" />
+
+</head>
+   
+    <body background="back.jpg">
+  <meta charset="utf-8" />
+  <!-- www.phpied.com/conditional-comments-block-downloads/ -->
+  <!-- Always force latest IE rendering engine
+       (even in intranet) & Chrome Frame
+       Remove this if you use the .htaccess -->
+ 
+      <meta http-equiv="X-UA-Compatible" content="IE=edge{{=not request.is_local and ',chrome=1' or ''}}">
+      
+
+  <title>{{=response.title or request.application}}</title>
+
+
+   <!-- /container -->
+
+  <!-- The javascript =============================================
+       (Placed at the end of the document so the pages load faster) -->
+  <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
+  <script src="{{=URL('static','js/web2py_bootstrap.js')}}"></script>
+  <!--[if lt IE 7 ]>
+      <script src="{{=URL('static','js/dd_belatedpng.js')}}"></script>
+      <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+      <![endif]-->
+  
+  {{if response.google_analytics_id:}}
+  <script src="{{=URL('static','js/analytics.js')}}"></script>
+  <script type="text/javascript">
+  analytics.initialize({
+    'Google Analytics':{trackingId:'{{=response.google_analytics_id}}'} 
+  });</script>
+  {{pass}}
+  <script src="{{=URL('static','js/share.js',vars=dict(static=URL('static','images')))}}"></script>
+
+
+<div id="wrapper">
+	<div id="menu-wrapper">
+		<div id="menu" class="container">
+			<ul>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="logo" class="container">
+        <h1 style="text-transform:uppercase">IIIT <a href="#"> Calendar</a></h1><br/><br/>
+		<p>Tomorrow belongs to those who prepare for it today.</p>
+	</div>
+	<div style="text-align:right">{{=auth.navbar()}}</div>
+	{{include}}
+	
+	<div id="page" class="container">
+	
+	</div>
+	<div id="three-column" class="container">
+		<div class="tbox1">
+			<div class="box-style box-style01">
+				<div class="content">
+					<div class="image"><img src="{{=URL('static','images/cal2.jpg')}}" width="324" height="200" alt="" /></div>
+					<h2>View your own customized calendar</h2>
+					
+				</div>
+			</div>
+		</div>
+		<div class="tbox2">
+			<div class="box-style box-style02">
+				<div class="content">
+					<div class="image"><img src="{{=URL('static','images/task.jpeg')}}" width="324" height="200" alt="" /></div>
+					<h2>Manage your tasks in an organised fashion</h2>
+					
+				</div>
+			</div>
+		</div>
+		<div class="tbox3">
+			<div class="box-style box-style03">
+				<div class="content">
+                    <div class="image"><img src="{{=URL('static','images/event.jpg')}}" width="324" height="200" alt="" /></div>
+					<h2>Event Management. Simplified. </h2>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+	
+<div id="footer">
+<p style="text-align:center">© 2013 CalendarInc. All rights reserved. By Simran Kedia and Gurniamat Kaur. </p>
+</div>
+
+<!-- end #footer -->
+</body>
+</html>

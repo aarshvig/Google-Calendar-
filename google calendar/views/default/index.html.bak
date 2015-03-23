@@ -1,0 +1,39 @@
+{{extend 'new_index.html'}}
+<body background="back.jpg">
+    <br />
+    
+    <h1 align="center" style="color:maroon; background-color:black"> Hi {{=name}} </h1>
+
+<br/> <br/>
+    <div style=" font-size:18px; font-family:Times"> &nbsp; &nbsp;  &nbsp;&nbsp;<a href="calendar.html" class="btn btn-primary"> View Calendar <i class="icon-eye-open icon-white"> </i> </a> <br/><br /> </div>
+<div class="btn-toolbar pagination-centered">
+<div class="btn-group">
+<div style="font-size:18px; font-family:Times">
+<a class="btn btn-inverse"><i class="icon-th-list icon-white"></i>&nbsp; &nbsp; &nbsp; &nbsp;Events </a>
+<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+<ul class="dropdown-menu">
+    <li><a href="editeventdetails.html"><i class="icon-pencil"></i> Edit</a></li>
+<li><a href="delete_eventdetails.html"><i class="icon-trash"></i> Delete</a></li>
+<li><a href="add_events.html"><i class="icon-plus"></i> Add</a></li>
+</ul>
+</div>
+</div>
+    </div>
+
+<br/>
+<div style="font-size:18px; font-family:Times">
+<div class="btn-toolbar pagination-centered">
+<div class="btn-group">
+<a class="btn btn-danger" href="#"><i class="icon-th-list icon-white"></i> &nbsp;&nbsp; &nbsp; &nbsp;Tasks </a>
+<a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li><a href="edittaskdetails.html"><i class="icon-pencil"></i> Edit</a></li>
+<li><a href="delete_taskdetails.html"><i class="icon-trash"></i> Delete</a></li>
+<li><a href="add_tasks.html"><i class="icon-plus"></i> Add</a></li>
+<li><a href="taskdonedetails.html"><i class="icon-check"></i> Mark as done</a></li>
+<li><a href="taskstat.html"><i class="icon-check"></i> Task Statistics</a></li>
+</ul>
+</div>
+</div>
+    </div>
+</body>

@@ -1,0 +1,27 @@
+{{extend 'desc_layout.html'}}
+<h1 align="center"> What is our calendar about? </h1><br />
+<br />
+<h2>Functionalities implemented :- </h2> 
+                                                                  
+a) Each user registers his account on the website, and is ensured privacy.<br />
+b) Creates calendars for each user based on his account.<br />
+c) Creates events for each user.<br />
+d) Creates tasks for each user.<br />
+e) Edits events and tasks according to user's convenience.<br />
+f) Easy deletion of events and tasks possible.<br />
+g) Marks tasks as done (using check boxes).<br />
+h) Implements different views ( Day, Week, Month) as selected by user. (Default view= Month)<br />
+i) The admin can send reminders to all users.<br />
+j) Events added by admin are common to all users.<br />
+h) Task efficiency of each user is calculated.<br />
+
+<br />
+
+<div style="text-align:right"><h2>Technologies used:- </h2></div>
+
+<div style="text-align:right">     a) Web2py <br /> </div>
+<div style="text-align:right">     b) JavaScript<br /> </div>
+<div style="text-align:right">     c) CSS<br /> </div>
+<div style="text-align:right">     d) HTML<br /> </div>
+   <div style="text-align:right">   e) Python<br /> <div>
+   <div style="text-align:right">   f) SQL<br /> <div>

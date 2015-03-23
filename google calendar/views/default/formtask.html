@@ -1,0 +1,14 @@
+{{extend 'form.html'}}
+<br />
+<br />
+<div style="text-align:center">
+<form action="edit_tasks?e={{=a['Title']}}" method="POST">
+Title : <input type="text" name="Tit" value="{{=a['Title']}}"/> <br/>
+Description : <input type="text" name="Des" value="{{=a['Description']}}"/> <br />
+Deadline Date : <input type="date" name="DeadD" value="{{=a['DeadlineDate']}}"/> <br/>
+Deadline time : <input type="time" name="DeadT" value="{{=a['DeadlineTime']}}"/> <br/>
+Completed : <input type="checkbox" name="Com" checked="{{=a['Completed']}}"/> <br/>
+Venue : <input type="text" name="Ven" value="{{=a['Venue']}}"/> <br/>
+<input type=submit value="Submit">
+</form>
+</div>

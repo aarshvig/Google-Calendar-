@@ -1,0 +1,31 @@
+{{extend 'admin_layout.html'}}
+<br />
+<br />
+<h1>
+    <marquee behavior="alternate"><h1>You are the Admin</h1></marquee></h1>
+<br/>
+<p style="text-align:center; font-size:20px">Names of all the Users Registered along with their id</p>
+{{for i in p:}}
+<p style="text-align:center"><b>{{=i['first_name']}}&nbsp;&nbsp;-->&nbsp;{{=i['id']}}</b></p>
+{{pass}}
+<br />
+<p style="text-align:center">
+    <form action="{{=URL('default','admin_calendar')}}" method="POST">
+        <div style="text-align:center"><input type="text" name="username" id="username" placeholder="Enter id of desired user" /> </div>
+        <div style="text-align:center"><input type="submit" name="submit" value="Show Calendar"> </div>
+	</form>
+</p>
+<p style="text-align:center; font-weight:bold">
+    <a href="sendmail.html">Send Mails</a> <img src="mail.png" alt="" height="42px" width="42px">
+</p> 
+<div class="btn-toolbar pagination-centered">
+<div class="btn-group">
+    <div style="font-weight:bold"><a class="btn btn-inverse" href="#"><i class="icon-th-list icon-white"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Events </a></div>
+<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li><a href="editadmineventdetails.html"><i class="icon-pencil"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit</a></li>
+<li><a href="deleteadmineventdetails.html"><i class="icon-trash"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete</a></li>
+<li><a href="add_adminevents.html"><i class="icon-plus"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add</a></li>
+</ul>
+</div>
+</p>

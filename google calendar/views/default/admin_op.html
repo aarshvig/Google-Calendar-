@@ -1,0 +1,30 @@
+{{extend 'admin_layout.html'}}
+<br />
+<br />
+<h1>
+    <marquee behavior="alternate"><h1>You are the Admin</h1></marquee></h1>
+<br/>
+<p style="text-align:center; font-size:20px">Names of all the Users Registered along with their id</p>
+{{for i in p:}}
+<p style="text-align:center"><b>{{=i['first_name']}}&nbsp;&nbsp;-->&nbsp;{{=i['id']}}</b></p>
+{{pass}}
+<br />
+<p style="text-align:center">
+    <form action="{{=URL('default','admin_calendar')}}" method="POST">
+        <div style="text-align:center"><input type="text" name="username" id="username" placeholder="Enter id of desired user" /> </div>
+        <div style="text-align:center"><input type="submit" name="submit" value="Show Calendar"> </div>
+	</form>
+</p>
+<p style="text-align:center; font-weight:bold">
+    <a href="sendmail.html">Send Mails</a> <img src="mail.png" alt="" height="42px" width="42px">
+</p> 
+<div class="btn-toolbar pagination-centered">
+<div class="btn-group">
+    <div style="text-align:center; font-weight:bold"><a class="btn btn-inverse" href="#"><i class="icon-th-list icon-white"></i> Events </a></div>
+<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+<ul class="dropdown-menu">
+    <div style="text-align:center; font-weight:bold">  <li><a href="editadmineventdetails.html"><i class="icon-pencil"></i> Edit</a></li> </div>
+    <div style="text-align:center; font-weight:bold"><li><a href="deleteadmineventdetails.html"><i class="icon-trash"></i> Delete</a></li> </div>
+    <div style="text-align:center; font-weight:bold"><li><a href="add_adminevents.html"><i class="icon-plus"></i> Add</a></li> </div>
+</ul>
+</div>

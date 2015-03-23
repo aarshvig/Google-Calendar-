@@ -1,0 +1,16 @@
+{{extend 'layout.html'}}
+<br />
+<br />
+<div style="text-align:center">
+    <form action="edit_adminevents?e={{=a['Title']}}" method="POST">
+    Title : <input type="text" name="Tit" value="{{=a['Title']}}"/> <br/> 
+    Description : <input type="text" name="Des" value="{{=a['Description']}}"/> <br /> 
+    Start Date : <input type="date" name="Stad" value="{{=a['Startdate']}}"/> <br/>
+    End Date : <input type="date" name="Eve" value="{{=a['Enddate']}}"/> <br/>
+    Start time : <input type="time" name="Sta" value="{{=a['Starttime']}}"/>  <br/>
+    End Time : <input type="time" name="End" value="{{=a['Endtime']}}"/> <br/>
+    All Day : <input type="checkbox" name="All" checked="{{=a['All_day']}}"/> <br/>
+    Venue : <input type="text" name="Ven" value="{{=a['Venue']}}"/> <br/>
+    <input type=submit value="Submit">
+    </form>
+</div>

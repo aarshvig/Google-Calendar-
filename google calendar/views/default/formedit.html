@@ -1,0 +1,16 @@
+{{extend 'form.html'}}
+<br />
+<br />
+<div style="text-align:center">
+    <form action="edit_events?e={{=a['Title']}}" method="POST">
+        Title : <input type="text" name="Tit" value="{{=a['Title']}}"/> <br/> <br />
+        Description : <input type="text" name="Des" value="{{=a['Description']}}"/> <br /> <br /> 
+    Start Date : <input type="text" name="Stad" value="{{=a['Startdate']}}"/> <br/><br /> 
+    End Date : <input type="text" name="Eve" value="{{=a['Enddate']}}"/> <br/><br /> 
+    Start time : <input type="text" name="Sta" value="{{=a['Starttime']}}"/>  <br/><br /> 
+    End Time : <input type="text" name="End" value="{{=a['Endtime']}}"/> <br/><br /> 
+    All Day : <input type="checkbox" name="All" checked="{{=a['All_day']}}"/> <br/><br /> 
+    Venue : <input type="text" name="Ven" value="{{=a['Venue']}}"/> <br/><br /> 
+    <input type=submit value="Submit"><br /> 
+    </form>
+</div>
